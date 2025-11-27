@@ -1,0 +1,265 @@
+.hours {
+  padding: 120px 0;
+  background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-accent) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hours-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.deco-bread, .deco-croissant {
+  position: absolute;
+  font-size: 8rem;
+  opacity: 0.08;
+}
+
+.deco-bread {
+  top: 10%;
+  left: 5%;
+  transform: rotate(-15deg);
+  animation: float 6s ease-in-out infinite;
+}
+
+.deco-croissant {
+  bottom: 10%;
+  right: 5%;
+  transform: rotate(15deg);
+  animation: float 6s ease-in-out infinite 2s;
+}
+
+.hours-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+  align-items: start;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.hours.visible .hours-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hours-card {
+  background: white;
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(139, 69, 19, 0.15);
+}
+
+.hours-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--color-cream);
+}
+
+.hours-icon {
+  font-size: 2.5rem;
+}
+
+.hours-header h3 {
+  font-size: 1.5rem;
+  color: var(--color-dark);
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 10px;
+  transition: var(--transition-smooth);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.schedule-item:hover {
+  background: var(--color-cream);
+}
+
+.schedule-item.today {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+}
+
+.schedule-day {
+  font-weight: 600;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.today-badge {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.schedule-dots {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-secondary) 0px,
+    var(--color-secondary) 3px,
+    transparent 3px,
+    transparent 8px
+  );
+  margin: 0 15px;
+  opacity: 0.5;
+}
+
+.schedule-item.today .schedule-dots {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.3) 0px,
+    rgba(255,255,255,0.3) 3px,
+    transparent 3px,
+    transparent 8px
+  );
+}
+
+.schedule-hours {
+  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+
+.schedule-hours.closed {
+  color: #c0392b;
+}
+
+.hours-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+  padding: 15px 20px;
+  background: var(--color-cream);
+  border-radius: 12px;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.hours-note svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.hours-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-card {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+  transition: var(--transition-smooth);
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(139, 69, 19, 0.15);
+}
+
+.info-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.info-card h4 {
+  font-size: 1.1rem;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.info-card a {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.info-card a:hover {
+  text-decoration: underline;
+}
+
+.info-card.special {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-gold));
+  color: var(--color-dark);
+}
+
+.info-card.special h4 {
+  color: var(--color-dark);
+}
+
+@media (max-width: 968px) {
+  .hours-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .hours-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .info-card.special {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .hours {
+    padding: 80px 0;
+  }
+  
+  .hours-card {
+    padding: 25px;
+  }
+  
+  .schedule-day {
+    min-width: 90px;
+    font-size: 0.9rem;
+  }
+  
+  .today-badge {
+    display: none;
+  }
+  
+  .schedule-hours {
+    font-size: 0.95rem;
+  }
+  
+  .hours-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-card.special {
+    grid-column: span 1;
+  }
+}
