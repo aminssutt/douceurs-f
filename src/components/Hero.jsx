@@ -75,17 +75,6 @@ function Hero() {
           </div>
         </div>
       </div>
-
-      <div className="hero-scroll">
-        <a href="#about" className="scroll-indicator">
-          <span className="scroll-text">Découvrir</span>
-          <div className="scroll-arrow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-          </div>
-        </a>
-      </div>
     </section>
   )
 }

@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import './Gallery.css'
 
 const images = [
-  { src: '/image1.jpg', fallback: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop', alt: 'Pain artisanal' },
-  { src: '/image2.jpg', fallback: 'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=600&h=400&fit=crop', alt: 'Viennoiseries' },
-  { src: '/image3.jpg', fallback: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&h=400&fit=crop', alt: 'Pâtisseries' },
-  { src: '/image4.jpg', fallback: 'https://images.unsplash.com/photo-1517433670267-30f41c087ed8?w=600&h=400&fit=crop', alt: 'Boulangerie' },
+  { src: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=600&fit=crop', alt: 'Pain artisanal' },
+  { src: 'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=800&h=600&fit=crop', alt: 'Viennoiseries' },
+  { src: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop', alt: 'Pâtisseries' },
+  { src: 'https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&h=600&fit=crop', alt: 'Croissants' },
 ]
 
 function Gallery() {
@@ -31,10 +31,6 @@ function Gallery() {
     return () => observer.disconnect()
   }, [])
 
-  const handleImageError = (e, fallback) => {
-    e.target.src = fallback
-  }
-
   return (
     <section id="gallery" className="gallery" ref={sectionRef}>
       <div className="container">
@@ -54,7 +50,6 @@ function Gallery() {
               <img 
                 src={image.src} 
                 alt={image.alt}
-                onError={(e) => handleImageError(e, image.fallback)}
               />
               <div className="gallery-overlay">
                 <span className="gallery-zoom">
@@ -79,7 +74,6 @@ function Gallery() {
           <img 
             src={selectedImage.src} 
             alt={selectedImage.alt}
-            onError={(e) => handleImageError(e, selectedImage.fallback)}
           />
         </div>
       )}
